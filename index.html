@@ -1,0 +1,305 @@
+
+<html lang="vi"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>MAC2</title>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MACII">
+
+<link rel="apple-touch-icon" href="https://your-website.com/logo-icon.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+
+html,body{
+  width:100%;
+  height:100%;
+  background:#fff;
+}
+
+/* ================== SCREEN COMMON ================== */
+.screen{
+  display:none;
+  width:100%;
+  height:100%;
+}
+
+.screen.active{display:block}
+
+/* ================== SCREEN 1 ================== */
+#screen1{
+  background:#0b7ea4;
+}
+#screen1 img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  pointer-events:none; /* 🔥 cho phép click xuyên ảnh */
+}
+
+/* ================== SCREEN 2 ================== */
+#screen2{
+  background:#777;
+  position:relative;
+}
+
+.topbar{
+  height:60px;
+  background:#0b7ea4;
+  color:rgba(255,255,255,0.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+}
+
+.loading-box{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:80%;
+  height:80px;
+  background:#fff;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  padding-left:30px;
+}
+
+.loader{
+  width:40px;
+  height:40px;
+  border:5px solid #ddd;
+  border-top:5px solid #999;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* ================== SCREEN 3 ================== */
+#clock{
+  background:#f5f5f5;
+  overflow:auto;
+}
+
+.header{
+  background:#0c7fa0;
+  color:#cfd8dc;
+  text-align:center;
+  padding:15px;
+  font-size:18px;
+}
+
+.date{
+  text-align:center;
+  font-size:32px;
+  margin:5px 0;
+}
+
+.time{
+  text-align:center;
+  font-size:64px;
+  font-weight:500;
+  color:#2847ff;
+}
+
+.buttons{
+ 
+  display:flex;
+  gap:15px;
+  padding:6px;
+}
+
+
+.btn{
+  flex:1;
+  width: auto;
+  padding: 8px 0;
+  border-radius:6px;
+  text-align:center;
+  color:#fff;
+  line-height: 1;
+  font-size:12px;
+  font-weight:600px;
+}
+
+.btn.light{background:#9ad7ea}
+.btn.dark{background:#1e40ff}
+
+.card{
+
+  position:relative;
+  overflow: hidden;
+  z- index:2;
+  margin:6px;
+  font-size:14px;
+  height: 40vh;
+  min-height:40px;
+  border:15px solid #0a8a1f;
+  background:#fff;
+  padding:14px;
+  color:#0a8a1f;
+}
+
+.card h3{
+  height: 3vh;
+  text-align:center;
+  margin-bottom:5px;
+}
+
+.card p{
+  font-size:10x;
+  margin:1px ;
+}
+  
+
+/* ===== WATERMARK ===== */
+.text-watermark {
+  position: fixed; /* Chế độ cố định theo màn hình */
+  top: 0;
+  left: 0;
+  width: 100vw;    /* 100% chiều rộng màn hình */
+  height: 100vh;   /* 100% chiều cao màn hình */
+  pointer-events: none;
+  z-index: 90;     /* Nằm dưới cùng để không đè lên khung xanh */
+  overflow: hidden;
+}
+
+.text-watermark span {
+  position: absolute;
+  font-size: 14px;
+  font-style: normal;
+  color: rgba(0,0,0,0.16);
+  transform: translate(-50%, -50%) rotate(-18deg);
+  white-space: nowrap;
+}
+</style>
+</head>
+
+<body>
+<div class="text-watermark">
+  <span style="left: 25%; top: 12.5%; transform: translate(-50%, -50%) rotate(-25deg);">V2162468 阮俊凱</span>
+  <span style="left: 75%; top: 12.5%; transform: translate(-50%, -50%) rotate(-25deg);">V2162468 阮俊凱</span>
+  <span style="left: 25%; top: 37.5%; transform: translate(-50%, -50%) rotate(-25deg);">V2162468 阮俊凱</span>
+  <span style="left: 75%; top: 37.5%; transform: translate(-50%, -50%) rotate(-25deg);">V2162468 阮俊凱</span>
+  <span style="left: 25%; top: 62.5%; transform: translate(-50%, -50%) rotate(-25deg);">V2162468 阮俊凱</span>
+  <span style="left: 75%; top: 62.5%; transform: translate(-50%, -50%) rotate(-25deg);">V2162468 阮俊凱</span>
+  <span style="left: 25%; top: 87.5%; transform: translate(-50%, -50%) rotate(-25deg);">V2162468 阮俊凱</span>
+  <span style="left: 75%; top: 87.5%; transform: translate(-50%, -50%) rotate(-25deg);">V2162468 阮俊凱</span></div>
+
+<!-- SCREEN 1 -->
+<div id="screen1" class="screen active" onclick="goLoading()">
+  <img src="splash1.jpg" alt="">
+</div>
+
+<!-- SCREEN 2 -->
+<div id="screen2" class="screen">
+  <div class="topbar">智能手機標籤</div>
+  <div class="loading-box">
+    <div class="loader"></div>
+  </div>
+</div>
+
+<!-- SCREEN 3 -->
+<div id="clock" class="screen">
+  <div class="header">智能手機標籤</div>
+  <div class="date" id="dateText">2026-2-8 Thứ Chủ Nhật</div>
+  <div class="time" id="timeText">21:22:22</div>
+    <br>
+  <div class="buttons">
+    <div class="btn light">Mã QR</div>
+    <div class="btn dark">Thẻ kiểm soát</div>
+  </div>
+
+  <div class="card">
+    <div class="text-watermark" id="wm"><span style="top: 119.027%; left: 71.2812%;"></span><span style="top: 37.086%; left: 158.477%;"></span><span style="top: 175.052%; left: 25.6812%;"></span><span style="top: 117.137%; left: 164.552%;"></span><span style="top: 102.495%; left: 113.681%;"></span><span style="top: 173.568%; left: 18.2019%;"></span><span style="top: 97.1823%; left: 37.6361%;"></span><span style="top: 124.175%; left: 22.9799%;"></span><span style="top: 129.187%; left: 199.572%;"></span><span style="top: 8.29936%; left: 194.438%;"></span><span style="top: 63.9415%; left: 147.258%;"></span><span style="top: 24.3974%; left: 127.043%;"></span><span style="top: 157.838%; left: 136.215%;"></span><span style="top: 166.824%; left: 33.2793%;"></span><span style="top: 181.719%; left: 44.3115%;"></span><span style="top: 13.233%; left: 179.362%;"></span><span style="top: 106.859%; left: 72.3669%;"></span><span style="top: 162.665%; left: 44.7387%;"></span><span style="top: 0.981628%; left: 189.078%;"></span><span style="top: 50.1582%; left: 24.4625%;"></span><span style="top: 151.286%; left: 175.126%;"></span><span style="top: 128.828%; left: 132.779%;"></span><span style="top: 114.918%; left: 173.932%;"></span><span style="top: 51.8727%; left: 60.7209%;"></span><span style="top: 155.02%; left: 165.143%;"></span></div>
+ 
+     <h3>Mac II Mang theo điện thoại thông minh/đồng hồ<br>Thẻ kiểm soát1</h3>
+    <br>
+    <br>
+    <br>
+    <p>Mã nhân viên：V2162468</p>
+    <p>Tên：阮俊凱</p>
+    <p>Mục đích sử dụng： 辦公APP</p>
+    <p>Thương hiệu điện thoại：Iphone</p>
+    <p>Model điện thoại：Iphone 17</p>
+    <p>Màu điện thoại：黃色</p>
+    <p>Số serial điện thoại：C634UEJW42QN</p>
+    <p>Khu vực được ủy quyền bổ sung： 辦公APP</p>
+  </div>
+</div>
+
+<script>
+const screen1 = document.getElementById("screen1");
+const screen2 = document.getElementById("screen2");
+const screen3 = document.getElementById("clock");
+
+/* chuyển giao diện */
+function goLoading(){
+  screen1.classList.remove("active");
+  screen2.classList.add("active");
+
+  setTimeout(()=>{
+    screen2.classList.remove("active");
+    screen3.classList.add("active");
+  },2000);
+}
+
+/* thời gian thực */
+function updateTime(){
+  const now = new Date();
+  const w = ["Chủ Nhật","Hai","Ba","Tư","Năm","Sáu","Bảy"][now.getDay()];
+  dateText.textContent =
+    `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()} Thứ ${w}`;
+
+  timeText.textContent =
+    `${String(now.getHours()).padStart(2,"0")}:`+
+    `${String(now.getMinutes()).padStart(2,"0")}:`+
+    `${String(now.getSeconds()).padStart(2,"0")}`;
+}
+setInterval(updateTime,1000);
+updateTime();
+/* watermark */
+const wm=document.getElementById("wm");
+for(let i=0;i<25;i++){
+  const s=document.createElement("span");
+  s.innerText="";
+  s.style.top=Math.random()*200+"%";
+  s.style.left=Math.random()*200+"%";
+  wm.appendChild(s);
+
+}
+ (function generateWatermarks() {
+    const container = document.querySelector('.text-watermark');
+    const text = "V2162468 阮俊凱"; 
+    const rows = 4;
+    const cols = 2;
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const span = document.createElement('span');
+        span.innerText = text;
+
+        // Tính toán vị trí dựa trên phần trăm để cách đều nhau
+        // Cột: 25% và 75% | Dòng: 12.5%, 37.5%, 62.5%, 87.5%
+        const left = (c * (100 / cols)) + (100 / (cols * 2));
+        const top = (r * (100 / rows)) + (100 / (rows * 2));
+
+        span.style.left = `${left}%`;
+        span.style.top = `${top}%`;
+        
+        // Căn giữa chính xác tâm của chữ vào tọa độ đã tính
+        span.style.transform = 'translate(-50%, -50%) rotate(-25deg)';
+container.appendChild(span);
+      }
+    }
+  })();
+</script>
+</body>
+</html>
