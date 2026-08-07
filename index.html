@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Phone Tag</title>
+
+<style>
+
+html,body{
+    margin:0;
+    padding:0;
+    background:#efefef;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.phone{
+
+    position:relative;
+
+    width:390px;
+    height:844px;
+
+    margin:auto;
+
+    overflow:hidden;
+
+    background:#fff;
+
+}
+
+.bg{
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+/*************/
+/* Date      */
+/*************/
+
+#date{
+
+    position:absolute;
+
+    top:115px;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:42px;
+
+    font-weight:500;
+
+    color:#111;
+
+    letter-spacing:1px;
+
+}
+
+/*************/
+/* Clock     */
+/*************/
+
+#clock{
+
+    position:absolute;
+
+    top:175px;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:88px;
+
+    color:#2148ff;
+
+    font-weight:300;
+
+    letter-spacing:2px;
+
+    font-family:
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+}
+
+@media (max-width:390px){
+
+.phone{
+
+    width:100vw;
+    height:calc(100vw*844/390);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="phone">
+
+    <img class="bg" src="background.png">
+
+    <div id="date"></div>
+
+    <div id="clock"></div>
+
+</div>
+
+<script>
+
+const week=[
+"Chủ Nhật",
+"Thứ Hai",
+"Thứ Ba",
+"Thứ Tư",
+"Thứ Năm",
+"Thứ Sáu",
+"Thứ Bảy"
+];
+
+function pad(v){
+
+    return v.toString().padStart(2,"0");
+
+}
+
+function update(){
+
+    const now=new Date();
+
+    document.getElementById("date").innerHTML=
+
+        now.getFullYear()
+
+        +"-"
+
+        +(now.getMonth()+1)
+
+        +"-"
+
+        +now.getDate()
+
+        +" "
+
+        +week[now.getDay()];
+
+    document.getElementById("clock").innerHTML=
+
+        pad(now.getHours())
+
+        +":"
+
+        +pad(now.getMinutes())
+
+        +":"
+
+        +pad(now.getSeconds());
+
+}
+
+update();
+
+setInterval(update,1000);
+
+</script>
+
+</body>
+
+</html>
