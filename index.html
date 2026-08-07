@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smart Phone Tag</title>
+<style>
+body{margin:0;font-family:Arial;background:#f2f2f2}
+.header{background:#0f7d99;color:#fff;text-align:center;padding:20px;font-size:34px}
+#date{text-align:center;font-size:54px;margin:20px 0 0}
+#clock{text-align:center;color:#2346ff;font-size:120px;font-weight:bold}
+.btns{display:flex;gap:20px;justify-content:center;margin:20px}
+.btn{width:280px;padding:18px;border-radius:10px;color:#fff;text-align:center;font-size:24px}
+.b1{background:#9fd9ef}.b2{background:#2147ff}
+.card{position:relative;width:760px;margin:20px auto;background:#fff;border:25px solid red;padding:35px;box-sizing:border-box;overflow:hidden}
+.water{position:absolute;inset:0;pointer-events:none;opacity:.12;background-image:
+repeating-linear-gradient(-30deg,transparent 0 120px,transparent 120px 120px),
+none}
+.wtxt{position:absolute;color:#000;font-size:22px;transform:rotate(-28deg)}
+.title{color:#d60000;text-align:center;font-size:32px;font-weight:bold;line-height:1.4}
+.subtitle{color:#d60000;text-align:center;font-size:28px;font-weight:bold;margin:10px}
+.info{color:#d60000;font-size:26px;line-height:1.8}
+.warn{color:#000;text-align:center;font-size:22px;line-height:1.5;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="header">智能手機標籤</div>
+<div id="date"></div>
+<div id="clock"></div>
+<div class="btns"><div class="btn b1">Mã QR</div><div class="btn b2">Thẻ kiểm soát</div></div>
+<div class="card">
+<div class="wtxt" style="left:40px;top:70px;">V2162468 阮俊凱</div>
+<div class="wtxt" style="right:30px;top:120px;">V2162468 阮俊凱</div>
+<div class="wtxt" style="left:80px;bottom:140px;">V2162468 阮俊凱</div>
+<div class="wtxt" style="right:50px;bottom:80px;">V2162468 阮俊凱</div>
+
+<div class="title">Mac II Mang theo điện thoại thông minh/<br>đồng hồ</div>
+<div class="subtitle">Thẻ kiểm soát1 🔷</div>
+
+<div class="info">
+<p>Mã nhân viên：V2162468</p>
+<p>Tên：阮俊凱</p>
+<p>Mục đích sử dụng：辦公APP</p>
+<p>Thương hiệu điện thoại：Iphone</p>
+<p>Model điện thoại：Iphone 17</p>
+<p>Màu điện thoại：黃色</p>
+<p>Số serial điện thoại：C634UEJW42QN</p>
+<p>Khu vực được ủy quyền bổ sung：辦公APP</p>
+</div>
+
+<div class="warn">
+Mang điện thoại di động vào khu vực kiểm soát Phải dán tem che camera<br><br>
+Cấm sử dụng điện thoại di động để chụp ảnh sản phẩm/vật phẩm/thiết bị/dữ liệu và các thông tin kiểm soát khác
+</div>
+</div>
+<script>
+function u(){
+ const n=new Date();
+ const d=["Chủ Nhật","Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy"];
+ document.getElementById("date").textContent=
+ `${n.getFullYear()}-${n.getMonth()+1}-${n.getDate()} ${d[n.getDay()]}`;
+ document.getElementById("clock").textContent=
+ n.toLocaleTimeString("en-GB").replace(/:/g,":");
+}
+u();setInterval(u,1000);
+</script>
+</body></html>
