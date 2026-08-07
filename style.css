@@ -1,0 +1,110 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    background:#ececec;
+}
+
+body{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    min-height:100vh;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        Arial,
+        sans-serif;
+
+}
+
+.phone{
+
+    position:relative;
+
+    width:min(100vw,430px);
+
+    aspect-ratio:828 / 1792;
+
+    overflow:hidden;
+
+    background:white;
+
+}
+
+.bg{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+}
+
+/************************/
+/*      DATE            */
+/************************/
+
+#date{
+
+    position:absolute;
+
+    left:0;
+
+    top:7.2%;
+
+    width:100%;
+
+    text-align:center;
+
+    color:#111;
+
+    font-weight:500;
+
+    font-size:clamp(26px,5.8vw,46px);
+
+    letter-spacing:0.5px;
+
+}
+
+/************************/
+/*      CLOCK           */
+/************************/
+
+#clock{
+
+    position:absolute;
+
+    left:0;
+
+    top:12.6%;
+
+    width:100%;
+
+    text-align:center;
+
+    color:#2745ff;
+
+    font-weight:300;
+
+    font-size:clamp(58px,16vw,108px);
+
+    letter-spacing:1px;
+
+    font-variant-numeric:tabular-nums;
+
+    font-feature-settings:"tnum";
+
+    line-height:1;
+
+}
